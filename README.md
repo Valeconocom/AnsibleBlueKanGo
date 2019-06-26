@@ -1,0 +1,2 @@
+# AnsibleBlueKanGo
+déploiement Ansible BlueKanGo
