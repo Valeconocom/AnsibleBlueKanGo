@@ -1,3 +1,8 @@
+#PLAYBOOK = FICHIER QUI LANCE LES DIFFERENTS FICHIERS DE CONF EN FONCTION
+#DU FICHIER HOST, ET DES FICHIERS DE CONF
+
+#OBSOLETE CAR LE CODE SERAIT TROP LONG ---> SEPARER LES TACHES 
+#OU REGROUPER LES INSTALLATION / CONFIGURATION LOGICIELS DANS LE MEME FICHIER ? 
 ---
 - hosts: Front
   tasks:
@@ -17,10 +22,17 @@
       apt: name=apache2 state=present
 
 
-- hosts: Front
+#OBSOLETE CAR LE CODE SERAIT TROP LONG ---> SEPARER LES TACHES INSTALLATION / CONFIGURATION
+#OU REGROUPER LES INSTALLATION / CONFIGURATION LOGICIELS DANS LE MEME FICHIER ? 
+- hosts: Elasticsearch
   tasks:
-    - name: install appache2
-      apt: name=apache2 state=present
+    - name: install 
+    #apt: name=apache2 state=present
+    #wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.2.1/elasticsearch-2.2.1.deb
+    #sudo dpkg -i elasticsearch-2.2.1.deb
+    #service elasticsearch start
+    #systemctl enable elasticsearch
+
 
     - name: install vim
       apt: name=vim state=present
@@ -34,3 +46,17 @@
     - name: install proftpd
       apt: name=apache2 state=present
       
+#Arborescence a faire pour les fichiers ansible
+#
+#├── hosts                      (Nom et grp serveur)
+#├── playbook.yml               (corps de ansible, definir conf et commade a excute 
+#└── roles/
+#    ├── soft/                  (séparer certaine conf pour éviter les fichiers a rallonge = en fonction ddes conf juste decommenter)
+#    │   ├── tasks/main.yml     (La tache a effectué as playbook)
+#    │   └── handlers/main.yml  (la tâche apres changement executer (reboot service) as playbook)
+#    ├── tools
+#    │   └── tasks/main.yml
+#    └── app
+#        ├── tasks/main.yml
+#        ├── templates/.env.j2
+#        └── templates/docker-compose.j2

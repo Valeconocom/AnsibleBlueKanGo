@@ -1,4 +1,8 @@
 ---
+#JUSTE DES CONFIGURATION TYPES A ADAPTER
+#TROUVER COMMENT FAIRE POUR QUE ÇA CIBLE QUE 
+#LES SERVEURS FRONT - BKGBMS-PW
+
 - name: Configure Apache.
   lineinfile:
     dest: "{{ apache_server_root }}/ports.conf"
