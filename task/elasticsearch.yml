@@ -1,0 +1,35 @@
+pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+tasks:
+    - name: install 
+    #COMMANDE NECESSAIRE POUR INSTALLER ELASTIC 2.2.1 SUR DEBIAN
+    #apt: name=apache2 state=present
+    #wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.2.1/elasticsearch-2.2.1.deb
+    #sudo dpkg -i elasticsearch-2.2.1.deb
+    #service elasticsearch start
+    #systemctl enable elasticsearch
+
+#REBOOT SERVICE ELASTIC
+# -name: restart elasticsearch
+#  service: name=elasticsearch state=restarted
+
+#START SERVICE ELASTICS
+#- name: Start Elasticsearch.
+#  service:
+#    name: elasticsearch
+#    state: "{{ elasticsearch_service_state }}"
+#    enabled: "{{ elasticsearch_service_enabled }}"
+
+#VERIF SI ELASTIC TOURNE
+#- name: Make sure Elasticsearch is running before proceeding.
+#  wait_for:
+#    host: "{{ elasticsearch_network_host }}"
+#    port: "{{ elasticsearch_http_port }}"
+#    delay: 3
+#    timeout: 300
+
+
